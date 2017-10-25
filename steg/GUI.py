@@ -42,7 +42,7 @@ def update_photo(deepness):#this function will hide the message into the picture
         global PICTURE, BMP_PICTURE
         if PICTURE is None :
                 return
-        if  choice.get() :#means file
+        if not choice.get() :#means file
                 msg = open(path.get(),"rb").read()
         else :
                 msg = text.get("1.0","end")[:-1].encode()
@@ -94,7 +94,7 @@ canvas.pack(fill="both",expand=True)
 scale = tk.Scale(display,{"from":1,"to":8},orient="horizontal",digits=1,command=update_photo)
 scale.pack(side="right")
 
-tk.Button(display,text="Parcourir",command=put_photo).pack(side="left")
+tk.Button(display,text="Parcourir (image support)",command=put_photo).pack(side="left")
 tk.Button(display,text="Exporter l'image",command=export_picture).pack(side="left")
 
 display.pack(side="top",fill="both",expand=True)
@@ -112,7 +112,7 @@ tk.Label(file,text="Chemin du fichier : ").pack(side="left")
 path = tk.Entry(file) ; path.pack(side="left")
 export = tk.Button(file,text="Exporter le message",command=export_msg)
 export.pack(side="right")
-browse = tk.Button(file,text="Parcourir",command=promptfile)
+browse = tk.Button(file,text="Parcourir (fichier à cacher)",command=promptfile)
 browse.pack(side="right")
 
 text = ScrolledText(msg)
